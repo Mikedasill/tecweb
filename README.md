@@ -1,10 +1,10 @@
 # tecweb
-- **Matrícula:** <TU_MATRICULA>
+- **Matricula:** <202238027>
 
-- **Nombre:** <TU_NOMBRE>
+- **Nombre:** <MIGUEL_DA_SILVA_SANABRIA>
 
 - **Materia:** Desarrollo de Aplicaciones Web
 
-- **Periodo:** <Otoño 2025>
+- **Periodo:** <Otono 2025>
 
-- **Descripción:** Repositorio central para prácticas y proyectos del curso (Apache en localhost).
+- **Descripciin:** Repositorio central para practicas y proyectos del curso (Apache en localhost).
