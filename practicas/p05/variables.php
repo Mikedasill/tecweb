@@ -174,3 +174,22 @@ echo "echo de \$e → " . boolToText($e) . "<br/>";
 unset($a,$b,$c,$d,$e,$f);
 ?>
 </div>
+<!-- ============================================================= -->
+<h2>7) $_SERVER: versiones, SO del servidor e idioma del navegador</h2>
+<div class="box mono">
+<?php
+$apache = isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : 'N/D';
+$phpv   = 'PHP ' . PHP_VERSION;
+$so     = PHP_OS_FAMILY . " (" . PHP_OS . ")";
+$lang   = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : 'N/D';
+
+echo "Apache/Server: " . htmlspecialchars($apache, ENT_QUOTES, 'UTF-8') . "<br/>";
+echo "PHP: " . htmlspecialchars($phpv, ENT_QUOTES, 'UTF-8') . "<br/>";
+echo "Sistema operativo (servidor): " . htmlspecialchars($so, ENT_QUOTES, 'UTF-8') . "<br/>";
+echo "Idioma del navegador (cliente): " . htmlspecialchars($lang, ENT_QUOTES, 'UTF-8') . "<br/>";
+?>
+</div>
+
+<p class="mono">Fin de P05 • <?= date('c'); ?></p>
+</body>
+</html>
