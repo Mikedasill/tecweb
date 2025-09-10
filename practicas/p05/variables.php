@@ -131,3 +131,19 @@ verConGlobal();
 unset($a,$b,$c,$z);
 ?>
 </div>
+<!-- ============================================================= -->
+<h2>5) Casting y valores finales</h2>
+<div class="box mono">
+<?php
+$a = "7 personas";
+$b = (integer) $a; // => 7
+$a = "9E3";        // notación científica -> 9000
+$c = (double) $a;  // => 9000.0 (double)
+
+echo "\$a = "; var_dump($a);
+echo "\$b = "; var_dump($b);
+echo "\$c = "; var_dump($c);
+
+unset($a,$b,$c);
+?>
+</div>
