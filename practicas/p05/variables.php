@@ -98,4 +98,36 @@ echo "\$z = "; print_r($z);
 unset($a,$b,$c,$z);
 ?>
 </div>
+<!-- ============================================================= -->
+<h2>4) Lectura con $GLOBALS / global</h2>
+<div class="box mono">
+<?php
+// Reconstruimos variables para la demostración con $GLOBALS
+$a = "PHP5";
+$GLOBALS['z'] = [];
+$GLOBALS['z'][] = &$a;
+$b = "5a version de PHP";
+$c = $b*10;
+$a .= $b;
+$b *= $c;
+$GLOBALS['z'][0] = "MySQL";
 
+// Acceso con $GLOBALS:
+echo "\$GLOBALS['a'] = "; var_dump($GLOBALS['a']);
+echo "\$GLOBALS['b'] = "; var_dump($GLOBALS['b']);
+echo "\$GLOBALS['c'] = "; var_dump($GLOBALS['c']);
+echo "\$GLOBALS['z'] = "; print_r($GLOBALS['z']);
+
+// Alternativa con 'global' dentro de una función:
+function verConGlobal(){
+  global $a,$b,$c,$z;
+  echo "<br/>[global] a="; var_dump($a);
+  echo "[global] b="; var_dump($b);
+  echo "[global] c="; var_dump($c);
+  echo "[global] z="; print_r($z);
+}
+verConGlobal();
+
+unset($a,$b,$c,$z);
+?>
+</div>
