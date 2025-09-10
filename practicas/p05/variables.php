@@ -147,3 +147,30 @@ echo "\$c = "; var_dump($c);
 unset($a,$b,$c);
 ?>
 </div>
+<!-- ============================================================= -->
+<h2>6) Valores booleanos y var_dump + conversión a string</h2>
+<div class="box mono">
+<?php
+$a = "0";
+$b = "TRUE";
+$c = FALSE;
+$d = ($a OR $b);
+$e = ($a AND $c);
+$f = ($a XOR $b);
+
+echo "\$a = "; var_dump($a);
+echo "\$b = "; var_dump($b);
+echo "\$c = "; var_dump($c);
+echo "\$d = "; var_dump($d);
+echo "\$e = "; var_dump($e);
+echo "\$f = "; var_dump($f);
+
+// Transformar booleanos $c y $e a texto para echo:
+function boolToText($v){ return $v ? 'true' : 'false'; }
+
+echo "<br/>echo de \$c → " . boolToText($c) . "<br/>";
+echo "echo de \$e → " . boolToText($e) . "<br/>";
+
+unset($a,$b,$c,$d,$e,$f);
+?>
+</div>
