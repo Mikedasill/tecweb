@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Práctica 3 – Marcado semántico</title>
+  <style>
+    body{margin:0 12%;font-family:sans-serif;line-height:1.6}
+    header, nav{margin-top:1rem}
+    h1{font-family:serif;border-bottom:1px solid #57b1dc;padding-bottom:.25rem}
+    h2{color:#d1633c}
+    section{margin:2rem 0}
+    .volver{margin-top:1rem}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Práctica 3 – Selección semántica</h1>
+  <nav>
+    <a href="#receta">Ejercicio 1: Guacamole</a> |
+    <a href="#articulo">Ejercicio 2: Artículo</a>
+  </nav>
+</header>
+
+<main>
+  <section id="receta">
+    <h2>Ejercicio 1 – Guacamole (clásico)</h2>
+    <!-- Aquí pegamos el contenido esencial de 01_principal.html sin el <head> -->
+    <p><q>Existe un condimento que no puede faltar en toda mesa mexicana.</q> […]</p>
+    <!-- TIP: para evitar duplicación, también puedes enlazar el archivo individual: -->
+    <p class="volver"><a href="01_principal.html">Ver versión completa del Ejercicio 1</a></p>
+  </section>
+
+  <section id="articulo">
+    <h2>Ejercicio 2 – Bajito y Despacito</h2>
+    <!-- Aquí pegamos el contenido esencial de 02_articulo.html sin el <head> -->
+    <article>
+      <header>
+        <p>Publicado por <cite>MasterChef</cite>,
+          <time datetime="2018-11-15">November 15, 2018</time></p>
+      </header>
+      <h3><b>Bajito y Despacito</b></h3>
+      <p>Esta semana estamos <em>extremadamente</em> emocionados […] <q>poción mágica a temperatura ultra baja</q>.</p>
+    </article>
+    <p class="volver"><a href="02_articulo.html">Ver versión completa del Ejercicio 2</a></p>
+  </section>
+</main>
+
+<footer class="volver">
+  <a href="#top">Volver arriba</a>
+</footer>
+
+</body>
+</html>
