@@ -75,4 +75,27 @@ echo "<br/><strong>Descripción:</strong> En el segundo bloque, al hacer <code>\
 unset($a,$b,$c);
 ?>
 </div>
+<!-- ============================================================= -->
+<h2>3) Evolución de tipos y contenidos (arrays, concatenación, aritmética)</h2>
+<div class="box mono">
+<?php
+$a = "PHP5";
+$z = []; 
+$z[] = &$a;    // referencia al contenido de $a
+$b = "5a version de PHP";
+$c = $b*10;    // $b no es numérica pura → se convierte; "5a ..." => 5 * 10 = 50
+echo "Tras \$c = \$b*10; \$c = "; var_dump($c);
+
+$a .= $b;      // concatenación
+echo "Tras \$a .= \$b; \$a = "; var_dump($a);
+
+$b *= $c;      // "5a version..." → 5 * 50 = 250 (conversión numérica)
+echo "Tras \$b *= \$c; \$b = "; var_dump($b);
+
+$z[0] = "MySQL"; // rompe la referencia anterior, ahora z[0] es string independiente
+echo "\$z = "; print_r($z);
+
+unset($a,$b,$c,$z);
+?>
+</div>
 
