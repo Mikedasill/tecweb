@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Concurso “Chidos mis Tenis” – Registro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --w: 900px; }
+    *{box-sizing:border-box} body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.5; margin:0; background:#faf6ef}
+    header, main, footer{max-width:var(--w); margin:auto; padding:1.2rem}
+    header h1{text-align:center; margin:1rem 0 0.25rem}
+    header p{max-width:60ch; margin:0.25rem auto 1.25rem; color:#444}
+    form{background:#fff; border:1px solid #e5dccf; border-radius:10px; padding:1.2rem; box-shadow:0 2px 10px #0001}
+    fieldset{border:1px solid #ddd; padding:1rem; margin:1rem 0; border-radius:8px}
+    legend{font-weight:700; padding:0 .5rem}
+    label{display:block; font-weight:600; margin:.6rem 0 .25rem}
+    .hint{font-size:.92rem; color:#555; font-weight:400}
+    .row{display:grid; gap:.75rem}
+    @media(min-width:720px){ .row-2{grid-template-columns:1fr 1fr} }
+    .inline{display:flex; flex-wrap:wrap; gap:1rem; margin-top:.25rem}
+    .inline label{font-weight:400; display:inline-flex; align-items:center; gap:.4rem; margin:0}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; color:#333}
+    .actions{display:flex; gap:.8rem; justify-content:flex-end; margin-top:1rem}
+    button{padding:.7rem 1rem; border:0; border-radius:8px; cursor:pointer}
+    button[type=submit]{background:#0b7; color:#fff; font-weight:700}
+    button[type=reset]{background:#eee}
+    small.req{color:#b00; font-weight:700}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Registro al Concurso “Chidos mis Tenis”</h1>
+  <p>¿Quieres cambiar tus viejos tenis por un par personalizado de Tenis Mike®? Justifica por qué tus tenis
+     <em>se tienen que ir</em> y diseña tu par ideal. <strong>Los diez mejores</strong> se llevan premio.</p>
+</header>
+
+<main>
+  <!-- Reemplaza la URL del action por la que pide tu práctica -->
+  <form action="https://httpbin.org/get" method="get">
+    <!-- 1) Datos del participante -->
+    <fieldset>
+      <legend>Información del participante</legend>
+
+      <div class="row row-2">
+        <div>
+          <label for="nombre">Nombre <small class="req">*</small></label>
+          <input id="nombre" name="nombre" type="text" required
+                 minlength="3" maxlength="60"
+                
+                 placeholder="Nombre y Apellidos" />
+          <div class="hint">Sólo letras y espacios (3–60).</div>
+        </div>
+
+        <div>
+          <label for="email">Dirección de e-mail <small class="req">*</small></label>
+          <input id="email" name="email" type="email" required placeholder="tucorreo@ejemplo.com" />
+        </div>
+
+        <div>
+          <label for="tel">Número telefónico</label>
+          <input id="tel" name="telefono" type="tel" inputmode="numeric" placeholder="10 dígitos"
+          <div class="hint">Opcional. 10 dígitos sin espacios.</div>
+        </div>
+      </div>
+
+      <label for="razon">Mis tenis son tan feos porque… <small class="req">*</small></label>
+      <textarea id="razon" name="razon" required rows="4" maxlength="400"
+                placeholder="Cuéntanos tu drama sneaker…"></textarea>
+      <div class="hint">Máx. 400 caracteres.</div>
+    </fieldset>
+
+    <!-- 2) Diseño personalizado -->
+    <fieldset>
+      <legend>Diseña tus Mike personalizados</legend>
+
+      <p><strong>Color</strong> <span class="hint">(escoge uno)</span></p>
+      <div class="inline">
+        <label><input type="radio" name="color" value="rojo" required /> Rojo</label>
+        <label><input type="radio" name="color" value="azul" /> Azul</label>
+        <label><input type="radio" name="color" value="negro" /> Negro</label>
+        <label><input type="radio" name="color" value="plateado" /> Plateado</label>
+      </div>
+
+      <p style="margin-top:1rem"><strong>Características</strong> <span class="hint">(escoge tantas como quieras)</span></p>
+      <div class="inline">
+        <label><input type="checkbox" name="caracteristicas[]" value="cordones_brillantes" /> Cordones brillantes</label>
+        <label><input type="checkbox" name="caracteristicas[]" value="logo_metalico" /> Logo metálico</label>
+        <label><input type="checkbox" name="caracteristicas[]" value="suela_luminosa" /> Suela luminosa</label>
+        <label><input type="checkbox" name="caracteristicas[]" value="wifi_integrado" /> WiFi integrado</label>
+      </div>
+
+      <div class="row row-2" style="margin-top:1rem">
+        <div>
+          <label for="talla">Talla</label>
+          <select id="talla" name="talla">
+            <option value="">— Selecciona —</option>
+            <!-- Ajusta rangos si tu profe pide otro estándar -->
+            <option>22</option><option>23</option><option>24</option><option>25</option>
+            <option>26</option><option>27</option><option>28</option><option>29</option>
+            <option>30</option><option>31</option><option>32</option>
+          </select>
+        </div>
+        <div>
+          <label>Nota</label>
+          <div class="hint">Las medidas reflejan el estándar masculino.</div>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="reset">Limpiar</button>
+      <button type="submit">Enviar registro</button>
+    </div>
+    <p class="mono">Fin de p06 • <?= date('c'); ?></p>
+  </form>
+</main>
+
+<footer>
+  <p class="hint">* Marca los campos obligatorios antes de enviar.</p>
+</footer>
+</body>
+</html>
