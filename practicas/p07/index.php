@@ -3,39 +3,39 @@
 declare(strict_types=1);
 header('Content-Type: text/html; charset=utf-8');
 
-// Carga funciones y datos
 require_once __DIR__ . '/src/src.php';
 
-// Router muy simple por query-string
-$ej  = $_GET['ej']  ?? 'todo';   // '1'..'7' | 'todo'
-$mat = $_GET['mat'] ?? null;     // matrícula para el ej. 6 (detalle)
+// Router por query-string (vista): '1'..'6' o 'todo'
+$ej = $_GET['ej'] ?? 'todo';
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>p07 | Funciones, GET/POST, ciclos y arreglos en PHP</title>
+  <title>P07 | Funciones, ciclos y arreglos en PHP (E1–E6)</title>
   <style>
     :root{ color-scheme: light dark; }
-    body{ font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif; line-height:1.35; margin: 28px; }
-    header, footer{ margin: 0 0 16px 0; }
-    h1{ font-size: 1.6rem; margin: 0 0 8px 0; }
-    h2{ font-size: 1.2rem; margin: 24px 0 6px 0; }
-    nav a{ display:inline-block; padding:.35rem .6rem; border:1px solid #bbb; border-radius:.5rem; margin:.15rem .25rem; text-decoration:none }
-    code, kbd, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-    pre{ background:#f3f3f3; padding:10px; overflow:auto; }
+    body{ font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif; margin:28px; line-height:1.4 }
+    header, footer{ margin:0 0 16px 0 }
+    h1{ font-size:1.55rem; margin:0 0 8px }
+    h2{ font-size:1.15rem; margin:24px 0 8px }
+    nav a{ display:inline-block; padding:.35rem .6rem; border:1px solid #bbb; border-radius:.5rem; margin:.1rem .2rem; text-decoration:none }
     table{ border-collapse:collapse; }
-    td, th{ border:1px solid #ccc; padding:.35rem .5rem; }
-    .muted{ color:#666 }
-    .hint{ color:#666; font-size:.9rem }
-    .ok{ color: #067d00; }
+    th,td{ border:1px solid #ccc; padding:.35rem .5rem; }
+    code,kbd,pre{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    pre{ background:#f3f3f3; padding:10px; overflow:auto }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .muted{ color:#666 } .ok{ color:#067d00 } .bad{ color:#b00020 }
+    .chip{ display:inline-block; padding:.05rem .35rem; border:1px solid #bbb; border-radius:.4rem; font-size:.85em }
+    .row-ok{ background:#eafbe7 }
+    form{ margin:.3rem 0 }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Práctica 07 — Funciones, ciclos y arreglos (PHP)</h1>
+  <h1>Práctica 07 — Funciones, ciclos y arreglos en PHP (E1–E6)</h1>
   <nav>
     <strong>Ver:</strong>
     <a href="?ej=todo">Todo</a>
@@ -45,57 +45,27 @@ $mat = $_GET['mat'] ?? null;     // matrícula para el ej. 6 (detalle)
     <a href="?ej=4">EJ 4</a>
     <a href="?ej=5">EJ 5</a>
     <a href="?ej=6">EJ 6</a>
-    <a href="?ej=7">EJ 7</a>
   </nav>
-  <p class="hint">Tip: en el Ejercicio 6 puedes abrir el detalle con <code>?ej=6&amp;mat=NOP4568</code>.</p>
 </header>
 
 <main>
 <?php
 switch ($ej) {
-  case '1':
-    echo renderEj1();
-    break;
-
-  case '2':
-    echo renderEj2();
-    break;
-
-  case '3':
-    echo renderEj3();
-    break;
-
-  case '4':
-    echo renderEj4();
-    break;
-
-  case '5':
-    echo renderEj5();
-    break;
-
-  case '6':
-    echo renderEj6($mat);
-    break;
-
-  case '7':
-    echo renderEj7();
-    break;
+  case '1': echo renderEj1(); break;
+  case '2': echo renderEj2(); break;
+  case '3': echo renderEj3(); break;
+  case '4': echo renderEj4(); break;
+  case '5': echo renderEj5(); break;
+  case '6': echo renderEj6(); break;
 
   case 'todo':
   default:
-    echo renderEj1();
-    echo "<hr>";
-    echo renderEj2();
-    echo "<hr>";
-    echo renderEj3();
-    echo "<hr>";
-    echo renderEj4();
-    echo "<hr>";
-    echo renderEj5();
-    echo "<hr>";
-    echo renderEj6($mat);
-    echo "<hr>";
-    echo renderEj7();
+    echo renderEj1();  echo "<hr>";
+    echo renderEj2();  echo "<hr>";
+    echo renderEj3();  echo "<hr>";
+    echo renderEj4();  echo "<hr>";
+    echo renderEj5();  echo "<hr>";
+    echo renderEj6();  // sin cortar la página
     break;
 }
 ?>
@@ -107,6 +77,7 @@ switch ($ej) {
 
 </body>
 </html>
+
 
 
 
