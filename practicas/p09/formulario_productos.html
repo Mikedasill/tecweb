@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Registro de Productos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,Arial;margin:2rem;max-width:900px}
+    fieldset{margin-bottom:1rem;padding:1rem}
+    label{display:block;margin:.5rem 0 .2rem}
+    input,textarea{width:100%;padding:.5rem}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .actions{display:flex;gap:.5rem;margin-top:1rem}
+  </style>
+</head>
+<body>
+  <h1>Alta de Productos</h1>
+
+  <form action="set_producto_v2.php" method="post">
+    <fieldset>
+      <legend>Datos del producto</legend>
+
+      <div class="row">
+        <div>
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" required>
+        </div>
+        <div>
+          <label for="modelo">Modelo</label>
+          <input id="modelo" name="modelo" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="marca">Marca</label>
+          <input id="marca" name="marca" required>
+        </div>
+        <div>
+          <label for="precio">Precio</label>
+          <input id="precio" name="precio" type="number" step="0.01" min="0" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="existencias">Existencias</label>
+          <input id="existencias" name="existencias" type="number" step="1" min="0" required>
+        </div>
+        <div>
+          <label for="imagen_url">URL de imagen (opcional)</label>
+          <input id="imagen_url" name="imagen_url" placeholder="https://...">
+        </div>
+      </div>
+
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" rows="4" placeholder="Detalles del producto"></textarea>
+    </fieldset>
+
+    <div class="actions">
+      <button type="submit">Guardar</button>
+      <button type="reset">Limpiar</button>
+    </div>
+  </form>
+</body>
+</html>
