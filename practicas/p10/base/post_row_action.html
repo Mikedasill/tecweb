@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script>
+    function show(e) {
+      const tr   = e.target.closest("tr");
+      const data = tr.querySelectorAll(".row-data");
+      const name = data[0].textContent;
+      const age  = data[1].textContent;
+
+      alert("Name: " + name + "\nAge: " + age);
+      send2form(name, age);
+    }
+
+    function send2form(name, age) {
+      // usa ruta RELATIVA dentro de /p10/base/
+      const url = "./formulario.php";
+
+      // crea un form POST "al vuelo"
+      const f = document.createElement("form");
+      f.action = url;
+      f.method = "post";
+
+      const inName = document.createElement("input");
+      inName.type  = "hidden";
+      inName.name  = "name";         // puedes usar "nombre" si prefieres
+      inName.value = name;
+
+      const inAge  = document.createElement("input");
+      inAge.type   = "hidden";
+      inAge.name   = "age";          // o "edad"
+      inAge.value  = age;
+
+      f.appendChild(inName);
+      f.appendChild(inAge);
+      document.body.appendChild(f);
+      f.submit();
+    }
+  </script>
+</head>
+<body>
+  <table class="table">
+    <thead>
+      <tr><th>#</th><th>Name</th><th>Age</th><th>Submit</th></tr>
+    </thead>
+    <tbody>
+      <tr><th>1</th><td class="row-data">Sara</td><td class="row-data">23</td>
+        <td><button class="btn btn-light" onclick="show(event)">submit</button></td></tr>
+      <tr><th>2</th><td class="row-data">John</td><td class="row-data">30</td>
+        <td><button class="btn btn-light" onclick="show(event)">submit</button></td></tr>
+      <tr><th>3</th><td class="row-data">Naman</td><td class="row-data">20</td>
+        <td><button class="btn btn-light" onclick="show(event)">submit</button></td></tr>
+    </tbody>
+  </table>
+</body>
+</html>
