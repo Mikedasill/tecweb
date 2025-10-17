@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>product_app (AJAX)</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2/css/pico.min.css">
+  <style>
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .full { grid-column: 1 / -1; }
+    #resultados .card { margin-block: .5rem; }
+    #msg { margin-top: 1rem; }
+  </style>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>product_app (AJAX)</h1>
+
+    <!-- Buscar -->
+    <section>
+      <h2>Buscar</h2>
+      <form id="frmSearch">
+        <div class="row full">
+          <input type="search" id="q" name="q" placeholder="Busca por nombre, marca o detalles" />
+          <button id="btnSearch" type="submit">Buscar</button>
+        </div>
+      </form>
+      <div id="resultados"></div>
+    </section>
+
+    <hr />
+
+    <!-- Nuevo producto (AJAX) -->
+    <section>
+      <h2>Nuevo producto (AJAX)</h2>
+      <form id="frmProducto">
+        <div class="row full">
+          <input id="nombre" name="nombre" placeholder="Nombre *" required minlength="3" maxlength="120" />
+          <input id="modelo" name="modelo" placeholder="Modelo *" required pattern="[A-Za-z0-9_-]{1,25}" />
+        </div>
+
+        <div class="row full">
+          <input id="marca" name="marca" placeholder="Marca *" required maxlength="120" />
+          <input id="precio" name="precio" type="number" step="0.01" min="100" placeholder="Precio (MXN) *" required />
+        </div>
+
+        <div class="row full">
+          <input id="existencias" name="existencias" type="number" min="0" step="1" placeholder="Existencias *" required />
+          <input id="imagen_url" name="imagen_url" placeholder="URL de imagen (opcional)" value="default.png" />
+        </div>
+
+        <div class="row full">
+          <textarea id="detalles" name="detalles" rows="3" placeholder="Detalles (opcional, ≤ 250)" maxlength="250"></textarea>
+        </div>
+
+        <button id="btnGuardar" type="submit">Guardar</button>
+      </form>
+
+      <div id="msg" role="status"></div>
+    </section>
+  </main>
+</body>
+</html>
+

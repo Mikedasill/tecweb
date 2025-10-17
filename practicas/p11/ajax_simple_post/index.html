@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>ajax_simple_post</title>
+<h2>ajax_simple_post ✅</h2>
+<button id="btn">Probar POST</button>
+<pre id="out" style="border:1px solid #ccc;padding:8px;"></pre>
+
+<script>
+  document.getElementById('btn').onclick = function () {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+      if (xhr.readyState === 4) {
+        document.getElementById('out').textContent =
+          (xhr.status === 200) ? xhr.responseText : ('HTTP ' + xhr.status);
+      }
+    };
+    xhr.open('POST', 'server.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    xhr.send(JSON.stringify({ hola:'mundo', practica:11 }));
+  };
+</script>

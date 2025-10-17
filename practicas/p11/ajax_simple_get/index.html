@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>ajax_simple_get</title>
+</head>
+<body>
+  <h2>ajax_simple_get ✅</h2>
+  <button id="btn">Probar GET</button>
+  <pre id="out" style="border:1px solid #ccc;padding:8px;"></pre>
+
+  <script>
+    document.getElementById('btn').onclick = function () {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+        if (xhr.readyState === 4) {
+          document.getElementById('out').textContent =
+            (xhr.status === 200) ? xhr.responseText : ('HTTP ' + xhr.status);
+        }
+      };
+      xhr.open('GET', 'server.php?demo=1', true);
+      xhr.send(null);
+    };
+  </script>
+</body>
+</html>
