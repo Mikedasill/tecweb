@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProductApp (SIN jQuery)</title>
+
+  <!-- Bootswatch (Darkly) o Bootstrap estándar, el que prefieras -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/darkly/bootstrap.min.css"
+  />
+
+  <style>
+    body { padding: 24px; }
+    .card { background: rgba(0,0,0,.25); }
+    .code-hint {
+      font-size: .85rem;
+      opacity: .85;
+    }
+    textarea#json { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    .table-wrap { max-height: 70vh; overflow: auto; }
+  </style>
+</head>
+<body>
+  <div class="container-xxl">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <h1 class="mb-0">ProductApp <small class="text-info">(SIN jQuery)</small></h1>
+
+      <!-- Buscador -->
+      <div class="d-flex gap-2" style="min-width: 420px;">
+        <input id="search" type="text" class="form-control" placeholder="ID, marca o descripción" />
+        <button type="button" class="btn btn-primary" onclick="/* el app.js escucha keyup; el botón es opcional */ document.getElementById('search').dispatchEvent(new Event('keyup'));">
+          Buscar
+        </button>
+      </div>
+    </div>
+
+    <!-- Zona de alertas que usa app.js (id="alerts") -->
+    <div id="alerts" class="mb-3"></div>
+
+    <div class="row g-4">
+      <!-- Formulario -->
+      <div class="col-12 col-lg-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Nuevo / Editar producto</h5>
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre de producto</label>
+              <input id="name" type="text" class="form-control" placeholder="Airmax, Converse, etc." />
+            </div>
+
+            <div class="mb-3">
+              <label for="json" class="form-label">JSON de producto</label>
+              <textarea
+                id="json"
+                class="form-control"
+                rows="12"
+                placeholder='{"precio":2100,"unidades":20,"modelo":"34","marca":"Nike","detalles":"muy buenos","imagen":"img/default.png"}'
+              ></textarea>
+              <div class="form-text code-hint mt-2">
+                Debe ser un JSON válido. Ejemplo:
+                <code>{"precio":2100,"unidades":20,"modelo":"34","marca":"Nike","detalles":"muy buenos","imagen":"img/default.png"}</code>
+              </div>
+            </div>
+
+            <div class="d-grid">
+              <button id="btn-save" type="button" class="btn btn-warning">
+                Agregar / Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de productos -->
+      <div class="col-12 col-lg-8">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Productos</h5>
+
+            <div class="table-responsive table-wrap">
+              <table class="table table-hover align-middle">
+                <thead class="table-secondary">
+                  <tr>
+                    <th style="width: 64px;">Id</th>
+                    <th style="min-width: 160px;">Nombre</th>
+                    <th>Descripción</th>
+                    <th style="width: 120px;">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="products">
+                  <!-- El app.js inyecta aquí las filas -->
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tu script SIN jQuery -->
+  <script src="./app.js"></script>
+</body>
+</html>
