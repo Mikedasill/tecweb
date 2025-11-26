@@ -1,0 +1,10 @@
+{
+    "name": "miguel/tecweb-p13",
+    "description": "Practica 13 - Gestion de dependencias propias con Composer",
+    "autoload": {
+        "psr-4": {
+            "MYAPI\\": "backend/myapi/"
+        }
+    },
+    "require": {}
+}
