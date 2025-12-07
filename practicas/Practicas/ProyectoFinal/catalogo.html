@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de recursos digitales</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+    <style>
+        body {
+            background: #1b2836;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+        }
+
+        h1 {
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+        .catalog-subtitle {
+            color: #9fb6d0;
+            margin-bottom: 20px;
+        }
+
+        #status-bar {
+            margin-bottom: 20px;
+        }
+
+        /* Tarjetas más limpias */
+        .recurso-card {
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .recurso-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+        }
+
+        .recurso-marca {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .recurso-modelo {
+            font-size: 0.8rem;
+        }
+
+        .recurso-detalles {
+            font-size: 0.9rem;
+            color: #cdd9e5;
+        }
+
+        .recurso-meta span {
+            font-size: 0.8rem;
+            margin-right: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                margin-top: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Localhost</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarCatalogo" aria-controls="navbarCatalogo"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCatalogo">
+        <div class="ml-auto d-flex mt-2 mt-lg-0">
+            <input class="form-control mr-2"
+                   type="search"
+                   id="search-catalogo"
+                   placeholder="Buscar recurso (nombre, marca, detalles)">
+            <a href="login.html" class="btn btn-outline-info">Login admin</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="text-center">Catálogo de recursos digitales</h1>
+    <p class="text-center catalog-subtitle">
+        Explora guías, plantillas, cheatsheets y más recursos para programadores.
+    </p>
+
+    <!-- Barra de estado -->
+    <div id="status-bar" class="alert alert-info text-center">
+        Mostrando todos los recursos
+    </div>
+
+    <!-- Aquí se dibujan las tarjetas -->
+    <div class="row" id="cards-container">
+        <!-- Se rellena con jQuery -->
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="catalogo.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Registro de Productos</title>
+    <style type="text/css">
+        ol, ul {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registro de Nuevo Producto</h1>
+
+    <form id="formProducto" action="set_producto_v2.php" method="post">
+
+        <fieldset>
+            <legend>Datos del Producto</legend>
+
+            <ul>
+                <li><label for="nombre">Nombre del producto:</label>
+                    <input type="text" name="nombre" id="nombre" required maxlength="100"></li>
+
+                <li><label for="marca">Marca:</label>
+                    <input type="text" name="marca" id="marca" required maxlength="25"></li>
+
+                <li><label for="modelo">Modelo:</label>
+                    <input type="text" name="modelo" id="modelo" required maxlength="25"></li>
+
+                <li><label for="precio">Precio:</label>
+                    <input type="number" name="precio" id="precio" required step="0.01" min="0"></li>
+
+                <li><label for="detalles">Detalles:</label><br>
+                    <textarea name="detalles" id="detalles" rows="4" cols="50" maxlength="250"></textarea></li>
+
+                <li><label for="unidades">Unidades en stock:</label>
+                    <input type="number" name="unidades" id="unidades" required min="0"></li>
+
+                <li><label for="imagen">Ruta de la imagen:</label>
+                    <input type="text" name="imagen" id="imagen" maxlength="100" value="img/default.png"></li>
+            </ul>
+        </fieldset>
+
+        <p>
+            <input type="submit" value="Registrar Producto">
+            <input type="reset" value="Limpiar">
+        </p>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Localhost</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+    <style>
+        body { 
+            background: #2b3e50; 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .login-card { 
+            width: 100%; 
+            max-width: 400px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card login-card text-white bg-secondary">
+        <div class="card-header text-center">
+            <h3><i class="fas fa-user-lock"></i> Acceso Localhost</h3>
+        </div>
+        <div class="card-body">
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="admin@localhost.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="pass" class="form-control" placeholder="admin123" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </form>
+            <div id="login-alert" class="alert alert-danger mt-3 d-none"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#login-form').submit(function(e) {
+                e.preventDefault(); // Evita que la página se recargue
+
+                const email = $('#email').val();
+                const password = $('#pass').val();
+
+                $.ajax({
+                    url: './backend/login.php',
+                    type: 'POST',
+                    data: { email, password },
+                    success: function(response) {
+                        console.log(response); // Para depurar
+                        
+                        // Parseamos la respuesta porque PHP devuelve texto JSON
+                        let res = JSON.parse(response);
+
+                        if (res.status === 'success') {
+                            // ¡Éxito! Redirigimos al Dashboard
+                            window.location.href = 'dashboard.html';
+                        } else {
+                            // Error: Mostramos el mensaje
+                            $('#login-alert').text(res.message).removeClass('d-none');
+                        }
+                    },
+                    error: function() {
+                        $('#login-alert').text("Error de conexión con el servidor").removeClass('d-none');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

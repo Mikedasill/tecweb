@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Localhost · Dashboard</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+    <style>
+        body {
+            background: #1b2836;
+        }
+        .navbar-brand {
+            font-weight: 600;
+        }
+        .card {
+            border-radius: .5rem;
+        }
+        .card-header {
+            font-weight: 500;
+        }
+        #chartRecursosMarca,
+        #chartUnidadesMarca,
+        #chartPrecioPromedio {
+            max-height: 260px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Localhost · Dashboard</a>
+
+    <div class="ml-auto d-flex align-items-center">
+        <span class="mr-4 small" id="user-label">Bienvenido, Administrador</span>
+
+        <input class="form-control mr-2"
+               name="search" id="search"
+               type="search"
+               placeholder="ID, nombre, marca o descripción"
+               aria-label="Search">
+
+        <a href="catalogo.html" class="btn btn-outline-info mr-2">Ver catálogo</a>
+        <button id="logout-btn" class="btn btn-outline-danger">Cerrar sesión</button>
+    </div>
+</nav>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Columna izquierda: formulario -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Gestión de recursos
+                </div>
+                <div class="card-body">
+                    <form id="product-form">
+                        <div class="form-group">
+                            <label for="name">Nombre del recurso</label>
+                            <input class="form-control"
+                                   type="text"
+                                   id="name"
+                                   placeholder="Nombre del recurso">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">JSON del recurso</label>
+                            <textarea class="form-control"
+                                      id="description"
+                                      cols="30"
+                                      rows="10"
+                                      placeholder='{
+  "precio": 0,
+  "unidades": 1,
+  "modelo": "XX-000",
+  "marca": "NA",
+  "detalles": "NA",
+  "imagen": "img/default.png"
+}'></textarea>
+                        </div>
+                        <input type="hidden" id="productId">
+                        <button class="btn btn-warning btn-block text-center" type="submit">
+                            Guardar recurso
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna derecha: tabla -->
+        <div class="col-md-8 mb-4">
+            <!-- Barra de mensajes -->
+            <div class="card mb-3 d-none" id="product-result">
+                <div class="card-body py-2">
+                    <ul id="container" class="mb-0"></ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Recursos registrados
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-sm table-dark mb-0">
+                        <thead>
+                        <tr>
+                            <th style="width: 40px;">ID</th>
+                            <th style="width: 220px;">Nombre</th>
+                            <th>Descripción</th>
+                            <th style="width: 80px;">Editar</th>
+                            <th style="width: 90px;">Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody id="products"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de gráficas -->
+    <section class="mt-5 mb-4">
+        <h3 class="mb-4 text-light">Estadísticas de recursos</h3>
+        <div class="row">
+            <!-- Gráfica 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card bg-secondary">
+                    <div class="card-header">
+                        Recursos por marca
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chartRecursosMarca"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfica 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card bg-secondary">
+                    <div class="card-header">
+                        Unidades totales por marca
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chartUnidadesMarca"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfica 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card bg-secondary">
+                    <div class="card-header">
+                        Precio promedio por marca
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chartPrecioPromedio"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="app.js"></script>
+</body>
+</html>
+
