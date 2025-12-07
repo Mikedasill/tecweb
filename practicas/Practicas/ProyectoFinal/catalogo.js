@@ -93,9 +93,12 @@ function pintarTarjetas(lista) {
                     </div>
                 </div>
                 <div class="card-footer bg-transparent border-0 text-right">
-                    <button class="btn btn-sm btn-outline-info">
+                    <!-- Enlace mínimo para simular descarga del recurso -->
+                    <a href="docs/recurso-demo.pdf"
+                       target="_blank"
+                       class="btn btn-sm btn-outline-info">
                         Descargar
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>`;
